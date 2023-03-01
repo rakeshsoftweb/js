@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label>Search</label>
+        <input type="text" onkeyup="onChangeHander(event)" />
+    </div>
+    <div>
+        <ul id="emplist">
+
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    const Employee = [
+        { id: 1, empname: "Rahul", phone: 12345 },
+        { id: 2, empname: "Karan", phone: 12346 },
+        { id: 3, empname: "Rajan", phone: 12347 },
+        { id: 4, empname: "Monica", phone: 12348 }
+    ]
+
+    function onChangeHander(event) {
+        let txtSrch = event.target.value;
+        let list = document.getElementById("emplist");
+        list.innerHTML = "";
+
+        Employee.forEach((item) => {
+            let txtMatch = item.empname.match(txtSrch);
+            // if (item.empname === txtSrch) 
+            if (txtMatch) 
+            {
+                let li = document.createElement("li");
+                li.innerHTML = item.empname;
+                list.appendChild(li);
+            }
+
+        })
+    }
+
+
+</script>
